@@ -120,10 +120,8 @@ fun! s:SetSmallerFont()
 endfun
 
 fun! s:SetOriginalFont()
-    if s:originalFontSize
+    if exists("s:originalFontSize") && s:originalFontSize
         call s:SetFontSize(s:originalFontSize)
-    else
-        echoerr "Original font size is unknown"
     endif
 endfun
 
