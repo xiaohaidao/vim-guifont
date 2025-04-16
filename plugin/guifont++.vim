@@ -44,6 +44,7 @@
 "   let guifontpp_smaller_font_map="<F10>"
 "   let guifontpp_larger_font_map="<S-F10>"
 "   let guifontpp_original_font_map="<C-F10>"
+"   let guifontpp_fontpat_unix = '\([^ ]\+ \)\([1-9][0-9]*\)'
 "
 " Version: $Id: guifont++.vim,v 1.6 2003/03/20 14:00:16 alex Exp alex $
 
@@ -73,6 +74,10 @@ endif
 let s:decimalpat = '[1-9][0-9]*'
 let s:fontpat_unix = '^\(\(-[^-]\+\)\{6}-\)\(' . s:decimalpat . '\)'
 let s:fontpat_win32 = '\(:h\)\(' . s:decimalpat . '\)\(:\|,\|$\)'
+
+if exists("g:guifontpp_fontpat_unix")
+    let s:fontpat_unix = g:guifontpp_fontpat_unix
+endif
 
 fun! s:GetFontSize()
     if has("unix")
